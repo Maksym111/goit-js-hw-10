@@ -17,4 +17,43 @@ body {
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
+  margin-left: 20px;
+}
+
+#search-box:hover, #search-box:focus{
+  border-color: rgb(42, 212, 255);
+  outline: none;
+}
+
+.country-list {
+  margin: 0;
+  margin-left: 20px;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+    align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  
+}
+
+.title {
+  display: inline-block;
+  margin-bottom: 10px;
+  margin-top: 0;
+  margin-left: 10px;
+}
+
+.country-info {
+margin: 0;
+padding: 0;  
+margin-left: 20px;
+}
+
+.main-title {
+  padding: 0;
+  margin: 0;
 }
