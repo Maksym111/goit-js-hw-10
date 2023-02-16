@@ -3,20 +3,24 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 const listCountryEl = document.querySelector('.country-list');
 const countryInfoEl = document.querySelector('.country-info');
 
-function fetchCountries(name) {
+async function fetchCountries(name) {
   const option = 'name,capital,population,flags,languages';
 
   const URL_FETCH = `https://restcountries.com/v3.1/name/${name}?fields=${option}`;
 
-  return fetch(URL_FETCH)
-    .then(r => r.json())
-    .then(countries => renderCountries(countries))
-    .catch(error => {
-      Notify.failure('Oops, there is no country with that name');
-    });
+  try {
+    const fetchUrl = await fetch(URL_FETCH);
+    const countries = await fetchUrl.json();
+    const country = await renderCountries(countries);
+
+    return country;
+  } catch (error) {
+    console.log(error);
+    Notify.failure('Oops, there is no country with that name');
+  }
 }
 
-function renderCountries(countries) {
+async function renderCountries(countries) {
   if (countries.length > 10) {
     return Notify.info(
       'Too many matches found. Please enter a more specific name.'
